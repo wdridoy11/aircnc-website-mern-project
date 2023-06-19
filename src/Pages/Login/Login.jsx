@@ -4,6 +4,7 @@ import toast from 'react-hot-toast'
 import { FcGoogle } from 'react-icons/fc'
 import {TbFidgetSpinner} from 'react-icons/tb'
 import { AuthContext } from '../../providers/AuthProvider'
+import { useRef } from 'react'
 
 const Login = () => {
 
@@ -15,6 +16,7 @@ const Login = () => {
     signInWithGoogle,
   } = useContext(AuthContext);
   const navigate = useNavigate();
+  const emailRef= useRef()
 
   // handle email Login
   const handleEmailLogin=(event)=>{
@@ -50,6 +52,21 @@ const Login = () => {
     })
   }
 
+  // handle password reset
+  const handleResetPassword=()=>{
+    const email = emailRef.current.value;
+    resetPassword(email)
+    .then((res)=>{
+      setLoading(false)
+      toast.success("Please check your email")
+    })
+    .catch((error)=>{
+      console.log(error.message)
+      toast.error(error.message)
+      setLoading(false)
+    })
+  }
+
   return (
     <div className='flex justify-center items-center min-h-screen'>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
@@ -76,6 +93,7 @@ const Login = () => {
                 id='email'
                 required
                 placeholder='Enter Your Email Here'
+                ref={emailRef}
                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
@@ -106,7 +124,7 @@ const Login = () => {
             </button>
           </div>
         </form>
-        <div className='space-y-1'>
+        <div onClick={handleResetPassword} className='space-y-1'>
           <button className='text-xs hover:underline hover:text-rose-500 text-gray-400'>
             Forgot password?
           </button>
@@ -130,7 +148,6 @@ const Login = () => {
           >
             Sign up
           </Link>
-          .
         </p>
       </div>
     </div>
