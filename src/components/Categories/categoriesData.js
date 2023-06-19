@@ -1,13 +1,13 @@
 import { TbBeach, TbMountain, TbPool } from 'react-icons/tb'
 import {
   GiBarn,
-  GiBoatFishing,
+  GiIsland,
   GiCactus,
   GiCastle,
-  GiCaveEntrance,
-  GiForestCamp,
-  GiIsland,
   GiWindmill,
+  GiForestCamp,
+  GiBoatFishing,
+  GiCaveEntrance,
 } from 'react-icons/gi'
 import { FaSkiing } from 'react-icons/fa'
 import { BsSnow } from 'react-icons/bs'

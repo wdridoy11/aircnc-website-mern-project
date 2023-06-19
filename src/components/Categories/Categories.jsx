@@ -2,13 +2,14 @@ import React from 'react'
 import Container from '../Shared/Container'
 import {categories} from './categoriesData';
 import CategoriesBox from './CategoriesBox';
-// console.log(categories)
+
 const Categories = () => {
   return (
     <div>
         <Container>
             <div className='pt-4 flex items-center flex-row justify-between overflow-x-auto gap-5'>
-                {categories.map((item)=><CategoriesBox 
+                {categories.map((item,index)=><CategoriesBox 
+                    key={index}
                     label={item.label} 
                     icon={item.icon}
                     >
