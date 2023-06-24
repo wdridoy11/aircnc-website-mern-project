@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import toast from 'react-hot-toast'
 import { FcGoogle } from 'react-icons/fc'
@@ -15,8 +15,10 @@ const Login = () => {
     resetPassword,
     signInWithGoogle,
   } = useContext(AuthContext);
+  const emailRef= useRef();
   const navigate = useNavigate();
-  const emailRef= useRef()
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   // handle email Login
   const handleEmailLogin=(event)=>{
@@ -28,7 +30,7 @@ const Login = () => {
     .then((res)=>{
       const user = res.user;
       console.log(user)
-      navigate('/')
+      navigate(from,{replace:true})
     })
     .catch((error)=>{
       console.log(error.message)
@@ -43,7 +45,7 @@ const Login = () => {
     .then((res)=>{
       const user = res.user;
       console.log(user)
-      navigate('/')
+      navigate(from,{replace:true})
     })
     .catch((error)=>{
       console.log(error.message)
