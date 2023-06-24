@@ -1,7 +1,9 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { useContext } from 'react'
+import toast from 'react-hot-toast'
 import { AuthContext } from '../../providers/AuthProvider'
+import { TbFidgetSpinner } from 'react-icons/tb'
 
 const SignUp = () => {
 
@@ -26,6 +28,7 @@ const SignUp = () => {
     const image = event.target.image.files[0];
     const formData = new FormData()
     formData.append("image",image)
+    // image upload api
     const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_api}`
     fetch(url,{
       method:"POST",
@@ -33,14 +36,16 @@ const SignUp = () => {
     })
     .then((res)=>res.json())
     .then((data)=>{
-      const imageUrl = ImageData.data.display_url;
+      const imageUrl = data.data.display_url;
       createUser(email,password)
       .then((res)=>{
         const user = res.user;
+        navigate(from,{replace:true})
         updateUserProfile(name, imageUrl)
-        .then((res)=>{
+        .then(()=>{
           const user = res.user;
-          console.log(user)
+          toast.success("Sign up successful")
+          navigate(from,{replace:true})
         })
         .catch((error)=>{
           console.log(error.message)
