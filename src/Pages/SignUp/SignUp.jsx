@@ -1,12 +1,11 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { FcGoogle } from 'react-icons/fc'
-import { useContext } from 'react'
 import toast from 'react-hot-toast'
-import { AuthContext } from '../../providers/AuthProvider'
+import { useContext } from 'react'
+import { FcGoogle } from 'react-icons/fc'
 import { TbFidgetSpinner } from 'react-icons/tb'
+import { AuthContext } from '../../providers/AuthProvider'
 
 const SignUp = () => {
-
   const {    
     loading,
     setLoading,
@@ -31,8 +30,8 @@ const SignUp = () => {
     // image upload api
     const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_api}`
     fetch(url,{
-      method:"POST",
-      body:formData,
+        method:"POST",
+        body:formData,
     })
     .then((res)=>res.json())
     .then((data)=>{
@@ -43,26 +42,26 @@ const SignUp = () => {
         navigate(from,{replace:true})
         updateUserProfile(name, imageUrl)
         .then(()=>{
-          const user = res.user;
-          toast.success("Sign up successful")
-          navigate(from,{replace:true})
+            const user = res.user;
+            toast.success("Sign up successful")
+            navigate(from,{replace:true})
         })
         .catch((error)=>{
-          console.log(error.message)
-          toast.error(error.message)
-          setLoading(false)
+            console.log(error.message)
+            toast.error(error.message)
+            setLoading(false)
         })
         navigate(from,{replace:true})
       })
       .catch((error)=>{
-        console.log(error.message)
-        toast.error(error.message)
-        setLoading(false)
+          console.log(error.message)
+          toast.error(error.message)
+          setLoading(false)
       })
     })
     .catch((error)=>{
-      console.log(error.message)
-      toast.error(error.message)
+        console.log(error.message)
+        toast.error(error.message)
     })
   
   }
@@ -71,14 +70,14 @@ const SignUp = () => {
   const handleGoogleSignIn=()=>{
     signInWithGoogle()
     .then((res)=>{
-      const user = res.user;
-      console.log(user)
-      navigate(from,{replace:true})
+        const user = res.user;
+        console.log(user)
+        navigate(from,{replace:true})
     })
     .catch((error)=>{
-      console.log(error.message)
-      toast.error(error.message)
-      setLoading(false)
+        console.log(error.message)
+        toast.error(error.message)
+        setLoading(false)
     })
   }
 
@@ -151,7 +150,6 @@ const SignUp = () => {
               />
             </div>
           </div>
-
           <div>
             <button
               type='submit'
@@ -180,7 +178,6 @@ const SignUp = () => {
           >
             Login
           </Link>
-          .
         </p>
       </div>
     </div>
