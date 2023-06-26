@@ -1,5 +1,6 @@
 import React from 'react'
 import Calender from './Calender'
+import Button from '../Shared/Button/Button'
 
 const RoomReservation = () => {
   return (
@@ -11,6 +12,15 @@ const RoomReservation = () => {
         <hr />
         <div>
             <Calender></Calender>
+        </div>
+        <hr />
+        <div className='p-4'>
+            <Button label="Reserve"></Button>
+        </div>
+        <hr />
+        <div className='p-4 flex flex-row items-center justify-between font-semibold text-lg'>
+            <div>Total</div>
+            <div>$ 300</div>
         </div>
     </div>
   )
