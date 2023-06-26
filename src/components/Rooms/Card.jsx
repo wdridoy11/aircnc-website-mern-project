@@ -12,7 +12,7 @@ const Card = ({room}) => {
           </div>
         </div>
         <div className='font-semibold text-lg'>{location}</div>
-        <div className='font-light text-neutral-500'>{dateRange}</div>
+        <div className='font-light text-neutral-500'>5 nights . {dateRange}</div>
         <div className='flex flex-row items-center gap-1'>
           <div className='font-semibold'>$ {price}</div>
           <div className='font-light'>{category}</div>
