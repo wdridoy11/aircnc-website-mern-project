@@ -9,18 +9,24 @@ const Rooms = () => {
     const [loading, setLoading] = useState(false);
     const [params, setParams] = useSearchParams();
     const category = params.get("category");
+    console.log(category)
     useEffect(()=>{
         setLoading(true)
         fetch(`rooms.json`)
         .then((res)=>res.json())
         .then((data)=>{
-            setRooms(data)
+            if(category){
+                const filtered = data.filter(room => room.category === category);
+                setRooms(filtered)
+            }else{
+                setRooms(data)
+            }
             setLoading(false)
         })
         .catch((err)=>{
             console.log(err.message)
         })
-    },[])
+    },[category])
 
   return (
     <div>

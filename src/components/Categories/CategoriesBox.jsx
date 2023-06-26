@@ -6,7 +6,6 @@ const CategoriesBox = ({label, icon:Icon}) => {
   const [params, setParams] = useSearchParams();
   const value = params.get("category");
   const navigate = useNavigate();
-
   const handleClick =()=>{
     let currentQuery = {};
     if(params){
@@ -23,7 +22,7 @@ const CategoriesBox = ({label, icon:Icon}) => {
     
     navigate(url)
   }
-console.log(value)
+
   return (
     <div onClick={handleClick} className='flex cursor-pointer flex-col items-center justify-center gap-2 p-3 border-b-2 hover:text-neutral-800 border-transparent text-neutral-500'>
         <Icon size={26} />
