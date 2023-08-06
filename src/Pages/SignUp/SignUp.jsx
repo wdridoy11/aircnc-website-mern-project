@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { AuthContext } from '../../providers/AuthProvider'
+import { saveUser } from '../../api/auth'
 
 const SignUp = () => {
   const {    
@@ -44,6 +45,8 @@ const SignUp = () => {
         .then(()=>{
             const user = res.user;
             toast.success("Sign up successful")
+            // send user data 
+            saveUser(user)
             navigate(from,{replace:true})
         })
         .catch((error)=>{
