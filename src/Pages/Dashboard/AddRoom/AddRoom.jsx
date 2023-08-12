@@ -23,7 +23,7 @@ const AddRoom = () => {
         const from = dates.startDate
         const to = dates.endDate;
         const price= event.target.price.value;
-        const total_guest= event.target.total_guest.value;
+        const guest= event.target.total_guest.value;
         const bedrooms= event.target.bedrooms.value;
         const bathrooms= event.target.bathrooms.value;
         const description= event.target.description.value;
@@ -33,14 +33,14 @@ const AddRoom = () => {
         imageUpload(image)
         .then(data=>{
             const roomData = {
-                title,
-                from,
                 to,
+                from,
+                title,
+                guest,
                 location,
                 bedrooms,
                 bathrooms,
                 category,
-                total_guest,
                 description,
                 price:parseFloat(price),
                 image: data.data.display_url,

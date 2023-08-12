@@ -1,11 +1,12 @@
 import React from 'react'
 import Heading from '../Heading/Heading'
-const Header = () => {
+const Header = ({singleRoomData}) => {
+  const {title, location} = singleRoomData;
   return (
     <>
         <Heading 
-            title="Veluvana Bali - Owl Bamboo House" 
-            subtitle="Please Select Other Categories" 
+            title={title}
+            subtitle={location}
             center={false}>
         </Heading> 
     </>
