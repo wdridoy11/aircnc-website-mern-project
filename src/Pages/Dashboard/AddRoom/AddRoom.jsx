@@ -19,8 +19,8 @@ const AddRoom = () => {
         setLoading(true)
         const location = event.target.location.value;
         const title = event.target.title.value;
-        // const from = dates.startDate
-        // const to = dates.endDate;
+        const from = dates.startDate
+        const to = dates.endDate;
         const price= event.target.price.value;
         const total_guest= event.target.total_guest.value;
         const bedrooms= event.target.bedrooms.value;
@@ -33,6 +33,8 @@ const AddRoom = () => {
         .then(data=>{
             const roomData = {
                 title,
+                from,
+                to,
                 location,
                 bedrooms,
                 bathrooms,
@@ -47,6 +49,7 @@ const AddRoom = () => {
                     email: user ?.email,
                 }
             }
+            console.log(roomData)
             setLoading(false)
         })
         .catch((err)=>{
