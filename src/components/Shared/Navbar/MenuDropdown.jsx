@@ -36,6 +36,7 @@ const MenuDropdown = () => {
             >
               Home
             </Link>
+            <Link to={'/dashboard/add-room'}>Dashboard</Link>
             {user ? (
               <div
                 onClick={logOut}
