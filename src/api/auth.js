@@ -16,3 +16,21 @@ export const saveUser = user=>{
     .then((res)=>res.json())
     .then((data)=>console.log(data))
 }
+
+// became a host
+
+export const becameHost = email =>{
+    const currentUser = {
+        role:"host"
+    }
+    // data fatch from database
+    fetch(`${import.meta.env.VITE_API_URL}/users/${email}`,{
+        method:"PUT",
+        headers:{
+            "content-type":"Application/json"
+        },
+        body:JSON.stringify(currentUser)
+    })
+    .then((res)=>res.json())
+    .then((data)=>console.log(data))
+}
