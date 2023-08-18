@@ -4,6 +4,8 @@ import Avatar from './Avatar'
 import { useCallback, useContext, useState } from 'react'
 import { AuthContext } from '../../../providers/AuthProvider'
 import HostModal from '../../Modal/HostRequestModal'
+import { becameHost } from '../../../api/auth'
+import {toast} from 'react-hot-toast'
 
 const MenuDropdown = () => {
   const { user, logOut } = useContext(AuthContext)
@@ -14,7 +16,12 @@ const MenuDropdown = () => {
   const [modal, setModal] = useState(false);
   // modal open function
   const modalHandler =(email)=>{
-    console.log("Modal Clicked")
+    becameHost(email)
+    .then((data)=>{
+      console.log(data)
+      toast.success("You are host now, Post Rooms")
+      closeModal();
+    })
   }
 
   const closeModal =()=>{
@@ -83,6 +90,7 @@ const MenuDropdown = () => {
         </div>
       )}
       <HostModal 
+          modalHandler={modalHandler}
           email={user?.email} 
           isOpen={modal} 
           closeModal={closeModal}
