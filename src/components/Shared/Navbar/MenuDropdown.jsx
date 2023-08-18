@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Avatar from './Avatar'
 import { useCallback, useContext, useState } from 'react'
 import { AuthContext } from '../../../providers/AuthProvider'
+import HostModal from '../../Modal/HostRequestModal'
 
 const MenuDropdown = () => {
   const { user, logOut } = useContext(AuthContext)
@@ -10,11 +11,21 @@ const MenuDropdown = () => {
   const toggleOpen = useCallback(() => {
     setIsOpen(value => !value)
   }, [])
+  const [modal, setModal] = useState(false);
+  // modal open function
+  const modalHandler =(email)=>{
+    console.log("Modal Clicked")
+  }
+
+  const closeModal =()=>{
+    setModal(false)
+  }
+
 
   return (
     <div className='relative'>
       <div className='flex flex-row items-center gap-3'>
-        <div className='hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer'>
+        <div onClick={()=>setModal(true)} className='hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer'>
           AirCNC your home
         </div>
         <div
@@ -71,6 +82,11 @@ const MenuDropdown = () => {
           </div>
         </div>
       )}
+      <HostModal 
+          email={user?.email} 
+          isOpen={modal} 
+          closeModal={closeModal}
+      />
     </div>
   )
 }
