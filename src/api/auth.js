@@ -33,3 +33,10 @@ export const becameHost = email =>{
     })
     .then((res)=>res.json())
 }
+
+// get user role
+export const getRole = async email =>{
+    const respons = await fetch(`${import.meta.env.VITE_API_URL}/users/${email}`)
+    const user = await respons.json();
+    return user?.role;
+}
